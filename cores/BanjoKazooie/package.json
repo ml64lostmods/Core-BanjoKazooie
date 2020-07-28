@@ -1,0 +1,11 @@
+{
+  "name": "BanjoKazooie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "BanjoKazooie.js",
+  "author": "SpiceyWolf, Mittenz",
+  "credits": "",
+  "license": "GPL3",
+  "core": "BanjoKazooie",
+  "updateUrl": "https://raw.githubusercontent.com/Modloader-Lost-Mods/Core-BanjoKazooie/master/update.json"
+}
