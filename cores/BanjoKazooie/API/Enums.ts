@@ -44,11 +44,12 @@ export const enum AddressType {
 	RT_VOXEL_ARRAY_PTR = 'BK:rt_voxel_arr_ptr',
 	RT_VOXEL_COUNT_PTR = 'BK:rt_voxel_cnt_ptr',
 
+	SAVE_CHEAT_FLAGS = 'BK:save_flags_cheat',
 	SAVE_EEPROM = 'BK:save_eeprom',
 	SAVE_GAME_FLAGS = 'BK:save_flags_game',
 	SAVE_HONEYCOMB_FLAGS = 'BK:save_flags_honeycomb',
 	SAVE_JIGGY_FLAGS = 'BK:save_flags_jiggy',
-	SAVE_MOVE_FLAGS = 'BK:save_move_flags',
+	SAVE_MOVE_FLAGS = 'BK:save_flags_move',
 	SAVE_MUMBO_TOKEN_FLAGS = 'BK:save_flags_token',
 	SAVE_NOTE_TOTALS = 'BK:save_note_totals'
 }

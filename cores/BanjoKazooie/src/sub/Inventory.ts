@@ -13,6 +13,7 @@ export class Inventory extends API.BaseObj implements API.IInventory {
 	private honeycombs_addr = this.inst + API.InventoryType.HONEYCOMBS_EMPTY;
 	private jiggies_addr = this.inst + API.InventoryType.JIGGIES;
 	private jinjos_addr = this.inst + API.InventoryType.CUR_LVL_JINJOS;
+	private lives_addr = this.inst + API.InventoryType.LIVES;
 	private tokens_addr = this.inst + API.InventoryType.MUMBO_TOKENS_HELD;
 	private notes_addr = this.inst + API.InventoryType.CUR_LVL_NOTES;
 	private present_green_addr = this.inst + API.InventoryType.CUR_LVL_PRESENT_GREEN;
@@ -93,12 +94,12 @@ export class Inventory extends API.BaseObj implements API.IInventory {
 		this.emulator.rdramWrite32(this.jinjos_addr, val);
 	}
 
-	get tokens(): number {
-		return this.emulator.rdramRead32(this.tokens_addr);
+	get lives(): number {
+		return this.emulator.rdramRead32(this.lives_addr);
 	}
-	set tokens(val: number) {
+	set lives(val: number) {
 		if (val < 0) val = 0;
-		this.emulator.rdramWrite32(this.tokens_addr, val);
+		this.emulator.rdramWrite32(this.lives_addr, val);
 	}
 
 	get notes(): number {
@@ -144,4 +145,13 @@ export class Inventory extends API.BaseObj implements API.IInventory {
 		else if (val > 100) { val = 100; }
 		this.emulator.rdramWrite32(this.feathers_red_addr, val);
 	}
+
+	get tokens(): number {
+		return this.emulator.rdramRead32(this.tokens_addr);
+	}
+	set tokens(val: number) {
+		if (val < 0) val = 0;
+		this.emulator.rdramWrite32(this.tokens_addr, val);
+	}
+
 }

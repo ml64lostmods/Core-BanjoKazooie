@@ -24,6 +24,7 @@ export namespace VersionHandler {
 		global.ModLoader[API.AddressType.RT_VOXEL_COUNT_PTR] = 0x00000; // Need found
 
 		// Save Data
+		global.ModLoader[API.AddressType.SAVE_CHEAT_FLAGS] = 0x383d48;
 		global.ModLoader[API.AddressType.SAVE_EEPROM] = 0x00000; // Need found
 		global.ModLoader[API.AddressType.SAVE_GAME_FLAGS] = 0x383d18;
 		global.ModLoader[API.AddressType.SAVE_HONEYCOMB_FLAGS] = 0x383e20;
@@ -55,6 +56,7 @@ export namespace VersionHandler {
 		global.ModLoader[API.AddressType.RT_VOXEL_COUNT_PTR] = 0x00000; // Need found
 
 		// Save Data
+		global.ModLoader[API.AddressType.SAVE_CHEAT_FLAGS] = 0x383bb8;
 		global.ModLoader[API.AddressType.SAVE_EEPROM] = 0x00000; // Need found
 		global.ModLoader[API.AddressType.SAVE_GAME_FLAGS] = 0x383b88;
 		global.ModLoader[API.AddressType.SAVE_HONEYCOMB_FLAGS] = 0x383cc0;
@@ -86,6 +88,7 @@ export namespace VersionHandler {
 		global.ModLoader[API.AddressType.RT_VOXEL_COUNT_PTR] = 0x381fc8;
 
 		// Save Data
+		global.ModLoader[API.AddressType.SAVE_CHEAT_FLAGS] = 0x3831d8;
 		global.ModLoader[API.AddressType.SAVE_EEPROM] = 0x383d20;
 		global.ModLoader[API.AddressType.SAVE_GAME_FLAGS] = 0x3831a8;
 		global.ModLoader[API.AddressType.SAVE_HONEYCOMB_FLAGS] = 0x3832e0;
@@ -117,6 +120,7 @@ export namespace VersionHandler {
 		global.ModLoader[API.AddressType.RT_VOXEL_COUNT_PTR] = 0x00000; // Need found
 
 		// Save Data
+		global.ModLoader[API.AddressType.SAVE_CHEAT_FLAGS] = 0x382428;
 		global.ModLoader[API.AddressType.SAVE_EEPROM] = 0x00000; // Need found
 		global.ModLoader[API.AddressType.SAVE_GAME_FLAGS] = 0x3823f8;
 		global.ModLoader[API.AddressType.SAVE_HONEYCOMB_FLAGS] = 0x382500;

@@ -8,6 +8,7 @@ export class SaveContext extends API.BaseObj implements API.ISaveContext {
 
 	// Abstraction
 	inventory: API.IInventory;
+	flags_cheat: API.IBuffered;
 	flags_game: API.IBuffered;
 	flags_honeycomb: API.IBuffered;
 	flags_jiggy: API.IBuffered;
@@ -18,6 +19,7 @@ export class SaveContext extends API.BaseObj implements API.ISaveContext {
 		super(emu);
 
 		this.inventory = new SUB.Inventory(emu);
+		this.flags_cheat = new SUB.CheatFlags(emu);
 		this.flags_game = new SUB.GameFlags(emu);
 		this.flags_honeycomb = new SUB.HoneyCombFlags(emu);
 		this.flags_jiggy = new SUB.JiggyFlags(emu);

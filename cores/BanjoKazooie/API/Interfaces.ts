@@ -31,6 +31,7 @@ export interface IInventory {
 	honeycombs: number;
 	jiggies: number;
 	jinjos: number;
+	lives: number;
 	notes: number;
 	orange: number;
 	present_green: number;
@@ -96,6 +97,7 @@ export interface IRuntime {
 
 export interface ISaveContext {
 	inventory: IInventory;
+	flags_cheat: IBuffered;
 	flags_game: IBuffered;
 	flags_honeycomb: IBuffered;
 	flags_jiggy: IBuffered;
