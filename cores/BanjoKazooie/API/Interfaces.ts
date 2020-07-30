@@ -13,6 +13,10 @@ export interface IBuffered {
 	set(offset: number, value: number): void;
 }
 
+export interface ICharacter {
+	character_id: number;
+}
+
 export interface ICommandBuffer {
 	runCommand(
 		command: apiEnum.CMD,
@@ -117,6 +121,7 @@ export interface IBKCore {
 	save: ISaveContext;
 	version: apiEnum.GameVersion;
 
+	character: ICharacter;
 	commandBuffer: ICommandBuffer;
 
 	isPlaying(): boolean;

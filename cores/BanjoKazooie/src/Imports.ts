@@ -1,4 +1,5 @@
 export * from './Camera';
+export * from './Character';
 export * from './CommandBuffer';
 export * from './Player';
 export * from './Runtime';

@@ -16,6 +16,7 @@ export class BanjoKazooie implements ICore, API.IBKCore {
 	save!: API.ISaveContext;
 	version!: API.GameVersion;
 
+	character!: CORE.Character;
 	commandBuffer!: CORE.CommandBuffer;
 	payloads: string[] = new Array<string>();
 
@@ -94,16 +95,21 @@ export class BanjoKazooie implements ICore, API.IBKCore {
 		this.player = new CORE.Player(this.ModLoader.emulator);
 		this.runtime = new CORE.Runtime(this.ModLoader.emulator);
 		this.save = new CORE.SaveContext(this.ModLoader.emulator);
+		this.character = new CORE.Character(this.ModLoader.emulator, this);
 		this.commandBuffer = new CORE.CommandBuffer(this.ModLoader.emulator);
 	}
 	onTick(): void {
-		if (!this.isPlaying()) return;
+		if (!this.isPlaying()) {
+			this.character.onTick();
+			return;
+		}
 
 		this.detect_map();
 		this.detect_collision();
 		this.return_to_lair();
 
 		// Tick stuff
+		this.character.onTick();
 		this.commandBuffer.onTick();
 		this.eventTicks.forEach((value: Function, key: string) => {
 			value();
