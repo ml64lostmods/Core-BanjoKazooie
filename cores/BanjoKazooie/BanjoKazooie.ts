@@ -99,10 +99,9 @@ export class BanjoKazooie implements ICore, API.IBKCore {
 		this.commandBuffer = new CORE.CommandBuffer(this.ModLoader.emulator);
 	}
 	onTick(): void {
-		if (!this.isPlaying()) {
-			this.character.onTick();
-			return;
-		}
+		this.character.onTick();
+
+		if (!this.isPlaying()) return;
 
 		this.detect_map();
 		this.detect_collision();

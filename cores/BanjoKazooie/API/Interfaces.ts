@@ -15,6 +15,11 @@ export interface IBuffered {
 
 export interface ICharacter {
 	character_id: number;
+	termite_id: number;
+	crocodile_id: number;
+	walrus_id: number;
+	pumpkin_id: number;
+	bee_id: number;
 }
 
 export interface ICommandBuffer {

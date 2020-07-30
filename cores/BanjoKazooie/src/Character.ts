@@ -4,18 +4,38 @@ import * as API from '../API/Imports';
 export class Character implements API.ICharacter {
     private emulator: IMemory;
     private core: API.IBKCore;
-    private bufScale: Buffer;
+    private bufFloat: Buffer;
 
     private character: API.CharacterType = API.CharacterType.BANJO_KAZOOIE;
+    private termite: API.CharacterType = API.CharacterType.BANJO_TERMITE;
+    private crocodile: API.CharacterType = API.CharacterType.BANJO_CROCODILE;
+    private walrus: API.CharacterType = API.CharacterType.BANJO_WALRUS;
+    private pumpkin: API.CharacterType = API.CharacterType.BANJO_PUMPKIN;
+    private bee: API.CharacterType = API.CharacterType.BANJO_BEE;
 
 	constructor(emu: IMemory, core: API.IBKCore) {
         this.emulator = emu;
         this.core = core;
-        this.bufScale = Buffer.alloc(4);
+        this.bufFloat = Buffer.alloc(4);
     }
     
     get character_id() { return this.character; }
     set character_id(value: API.CharacterType) { this.character = value; }
+
+    get termite_id() { return this.termite; }
+    set termite_id(value: API.CharacterType) { this.termite = value; }
+
+    get crocodile_id() { return this.crocodile; }
+    set crocodile_id(value: API.CharacterType) { this.crocodile = value; }
+
+    get walrus_id() { return this.walrus; }
+    set walrus_id(value: API.CharacterType) { this.walrus = value; }
+
+    get pumpkin_id() { return this.pumpkin; }
+    set pumpkin_id(value: API.CharacterType) { this.pumpkin = value; }
+
+    get bee_id() { return this.bee; }
+    set bee_id(value: API.CharacterType) { this.bee = value; }
 
 	onTick() {
         switch(this.core.player.animal) {
@@ -41,17 +61,59 @@ export class Character implements API.ICharacter {
                     case API.CharacterType.TOOTY_UGLY: this.set_character(0x0469, 0.15); break;
                 }
                 break;
+            case API.AnimalType.TERMITE:
+                switch(this.termite) {
+                    case API.CharacterType.BANJO_TERMITE: this.set_character(0x034f, 1.0); break;
+                    case API.CharacterType.TERMITE: this.set_character(0x0350, 1.0); break;
+                    case API.CharacterType.CRAB_GREEN: this.set_character(0x0358, 1.0); break;
+                }
+                break;
+            case API.AnimalType.CROCODILE:
+                switch(this.crocodile) {
+                    case API.CharacterType.BANJO_CROCODILE: this.set_character(0x0374, 1.0); break;
+                    case API.CharacterType.MR_VILE: this.set_character(0x0373, 1.0); break;
+                }
+                break;
+            case API.AnimalType.WALRUS:
+                switch(this.walrus) {
+                    case API.CharacterType.BANJO_WALRUS: this.set_character(0x0359, 1.0); break;
+                    case API.CharacterType.WOZZA: this.set_character(0x0494, 1.0); break;
+                }
+                break;
+            case API.AnimalType.PUMPKIN:
+                switch(this.pumpkin) {
+                    case API.CharacterType.BANJO_PUMPKIN: this.set_character(0x036f, 1.0); break;
+                    case API.CharacterType.SNOWBALL: this.set_character(0x0378, 1.0); break;
+                }
+                break;
+            case API.AnimalType.BEE:
+                switch(this.bee) {
+                    case API.CharacterType.BANJO_BEE: this.set_character(0x0362, 1.0); break;
+                    case API.CharacterType.BEE: this.set_character(0x0362, 1.0); break;
+                }
+                break;
         }
     }
     
     private set_character(value: number, scale: number) {
         // Model
+        this.emulator.rdramWrite16(0x2986b2, value);
         this.emulator.rdramWrite16(0x2986ba, value);
         this.emulator.rdramWrite16(0x2986be, value);
 
         // Scale
-        this.bufScale.writeFloatBE(scale, 0);
-        this.core.player.scale = this.bufScale.readInt32BE(0);
+        this.bufFloat.writeFloatBE(scale, 0);
+        this.core.player.scale = this.bufFloat.readInt32BE(0);
     }
 
+    private set_animal(value: number, scale: number) {
+        // Model
+        this.emulator.rdramWrite16(0x2986b2, value);
+        this.emulator.rdramWrite16(0x2986ba, value);
+        this.emulator.rdramWrite16(0x2986be, value);
+
+        // Scale
+        this.bufFloat.writeFloatBE(scale, 0);
+        this.core.player.scale = this.bufFloat.readInt32BE(0);
+    }
 }

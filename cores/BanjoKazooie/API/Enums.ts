@@ -1385,6 +1385,7 @@ export enum AnimalType {
 }
 
 export enum CharacterType {
+	// CHARACTER
 	BANJO_KAZOOIE,
 	BLUBBER,
 	BOTTLES,
@@ -1403,6 +1404,27 @@ export enum CharacterType {
 	SKELETON,
 	TOOTY,
 	TOOTY_UGLY,
+
+	// TERMITE
+	BANJO_TERMITE,
+	TERMITE,
+	CRAB_GREEN,
+
+	// CROCODIILE
+	BANJO_CROCODILE,
+	MR_VILE,
+
+	// WALRUS
+	BANJO_WALRUS,
+	WOZZA,
+
+	// PUMPKIN
+	BANJO_PUMPKIN,
+	SNOWBALL,
+
+	// BEE
+	BANJO_BEE,
+	BEE
 }
 
 export enum ExitType {
