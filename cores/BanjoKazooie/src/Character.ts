@@ -13,6 +13,8 @@ export class Character implements API.ICharacter {
     private pumpkin: API.CharacterType = API.CharacterType.BANJO_PUMPKIN;
     private bee: API.CharacterType = API.CharacterType.BANJO_BEE;
 
+    true_id: number = 0x034d;
+
 	constructor(emu: IMemory, core: API.IBKCore) {
         this.emulator = emu;
         this.core = core;
@@ -97,10 +99,15 @@ export class Character implements API.ICharacter {
 
     private set_raw(value: number, scale: number) {
         // Model
+        this.true_id = value;
         this.emulator.rdramWrite16(0x2986b2, value);
         this.emulator.rdramWrite16(0x2986ba, value);
         this.emulator.rdramWrite16(0x2986be, value);
-        this.core.player.model_index = 0x034e;
+
+        // Level specific banjo model
+        if (this.core.runtime.current_level === API.LevelType.GRUNTILDAS_LAIR) {
+            this.core.player.model_index = 0x034e;
+        } else { this.core.player.model_index = 0x034d; }
 
         // Scale
         this.bufFloat.writeFloatBE(scale, 0);
