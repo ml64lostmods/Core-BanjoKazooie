@@ -14,7 +14,7 @@ export interface IBuffered {
 }
 
 export interface ICharacter {
-	character_id: number;
+	bear_bird_id: number;
 	termite_id: number;
 	crocodile_id: number;
 	walrus_id: number;

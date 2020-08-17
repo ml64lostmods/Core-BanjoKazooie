@@ -1399,9 +1399,9 @@ export enum CharacterType {
 	JINJO_PINK,
 	JINJO_YELLOW,
 	KLUNGO,
+	LIMBO,
 	MUMBO,
 	NABNUT,
-	SKELETON,
 	TOOTY,
 	TOOTY_UGLY,
 

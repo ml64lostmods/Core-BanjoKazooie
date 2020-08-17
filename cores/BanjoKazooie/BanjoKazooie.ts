@@ -99,6 +99,7 @@ export class BanjoKazooie implements ICore, API.IBKCore {
 		this.commandBuffer = new CORE.CommandBuffer(this.ModLoader.emulator);
 	}
 	onTick(): void {
+		// Safe to do at all times
 		this.character.onTick();
 
 		if (!this.isPlaying()) return;
@@ -108,7 +109,6 @@ export class BanjoKazooie implements ICore, API.IBKCore {
 		this.return_to_lair();
 
 		// Tick stuff
-		this.character.onTick();
 		this.commandBuffer.onTick();
 		this.eventTicks.forEach((value: Function, key: string) => {
 			value();
@@ -150,9 +150,17 @@ export class BanjoKazooie implements ICore, API.IBKCore {
 		let addr: number;
 		let ptr: number;
 		let i: number;
+		let n: number;
 
 		let actors: Array<number> = [];
 		let voxels: Array<number> = [];
+
+		let players: Array<number> = [];
+		addr = global.ModLoader[API.AddressType.PUPPET] + 0x04;
+		for (i = 0; i < 16; i++) {
+			ptr = addr + i * 0x08;
+			if (ptr !== 0) players.push(ptr);
+		}
 
 		for (i = 0; i < 16; i++) {
 			// Actors

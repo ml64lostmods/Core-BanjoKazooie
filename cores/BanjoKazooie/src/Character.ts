@@ -6,7 +6,7 @@ export class Character implements API.ICharacter {
     private core: API.IBKCore;
     private bufFloat: Buffer;
 
-    private character: API.CharacterType = API.CharacterType.BANJO_KAZOOIE;
+    private bear_bird: API.CharacterType = API.CharacterType.BANJO_KAZOOIE;
     private termite: API.CharacterType = API.CharacterType.BANJO_TERMITE;
     private crocodile: API.CharacterType = API.CharacterType.BANJO_CROCODILE;
     private walrus: API.CharacterType = API.CharacterType.BANJO_WALRUS;
@@ -19,8 +19,8 @@ export class Character implements API.ICharacter {
         this.bufFloat = Buffer.alloc(4);
     }
     
-    get character_id() { return this.character; }
-    set character_id(value: API.CharacterType) { this.character = value; }
+    get bear_bird_id() { return this.bear_bird; }
+    set bear_bird_id(value: API.CharacterType) { this.bear_bird = value; }
 
     get termite_id() { return this.termite; }
     set termite_id(value: API.CharacterType) { this.termite = value; }
@@ -40,8 +40,8 @@ export class Character implements API.ICharacter {
 	onTick() {
         switch(this.core.player.animal) {
             case API.AnimalType.BEAR_BIRD:
-                switch(this.character) {
-                    case API.CharacterType.BANJO_KAZOOIE: this.set_character(0x034e, 1.0); break;
+                switch(this.bear_bird) {
+                    case API.CharacterType.BANJO_KAZOOIE: this.set_raw(0x034e, 1.0); break;
                     case API.CharacterType.BOTTLES: this.set_character(0x0387, 1.0); break;
                     case API.CharacterType.BLUBBER: this.set_character(0x0370, 0.7); break;
                     case API.CharacterType.CHIMPY: this.set_character(0x035d, 0.8); break;
@@ -54,63 +54,71 @@ export class Character implements API.ICharacter {
                     case API.CharacterType.JINJO_PINK: this.set_character(0x03c1, 1.0); break;
                     case API.CharacterType.JINJO_YELLOW: this.set_character(0x03bb, 1.0); break;
                     case API.CharacterType.KLUNGO: this.set_character(0x046A, 0.6); break;
+                    case API.CharacterType.LIMBO: this.set_character(0x04cc, 0.7); break;
                     case API.CharacterType.MUMBO: this.set_character(0x03c6, 0.8); break;
                     case API.CharacterType.NABNUT: this.set_character(0x0502, 0.75); break;
-                    case API.CharacterType.SKELETON: this.set_character(0x04cc, 0.7); break;
                     case API.CharacterType.TOOTY: this.set_character(0x035a, 0.3); break;
                     case API.CharacterType.TOOTY_UGLY: this.set_character(0x0469, 0.15); break;
                 }
                 break;
             case API.AnimalType.TERMITE:
                 switch(this.termite) {
-                    case API.CharacterType.BANJO_TERMITE: this.set_character(0x034f, 1.0); break;
-                    case API.CharacterType.TERMITE: this.set_character(0x0350, 1.0); break;
-                    case API.CharacterType.CRAB_GREEN: this.set_character(0x0358, 1.0); break;
+                    case API.CharacterType.BANJO_TERMITE: this.set_animal(0x034f, 1.0); break;
+                    case API.CharacterType.TERMITE: this.set_animal(0x0350, 1.0); break;
+                    case API.CharacterType.CRAB_GREEN: this.set_animal(0x0358, 1.0); break;
                 }
                 break;
             case API.AnimalType.CROCODILE:
                 switch(this.crocodile) {
-                    case API.CharacterType.BANJO_CROCODILE: this.set_character(0x0374, 1.0); break;
-                    case API.CharacterType.MR_VILE: this.set_character(0x0373, 1.0); break;
+                    case API.CharacterType.BANJO_CROCODILE: this.set_animal(0x0374, 1.0); break;
+                    case API.CharacterType.MR_VILE: this.set_animal(0x0373, 1.0); break;
                 }
                 break;
             case API.AnimalType.WALRUS:
                 switch(this.walrus) {
-                    case API.CharacterType.BANJO_WALRUS: this.set_character(0x0359, 1.0); break;
-                    case API.CharacterType.WOZZA: this.set_character(0x0494, 1.0); break;
+                    case API.CharacterType.BANJO_WALRUS: this.set_animal(0x0359, 1.0); break;
+                    case API.CharacterType.WOZZA: this.set_animal(0x0494, 1.0); break;
                 }
                 break;
             case API.AnimalType.PUMPKIN:
                 switch(this.pumpkin) {
-                    case API.CharacterType.BANJO_PUMPKIN: this.set_character(0x036f, 1.0); break;
-                    case API.CharacterType.SNOWBALL: this.set_character(0x0378, 1.0); break;
+                    case API.CharacterType.BANJO_PUMPKIN: this.set_animal(0x036f, 1.0); break;
+                    case API.CharacterType.SNOWBALL: this.set_animal(0x0378, 1.0); break;
                 }
                 break;
             case API.AnimalType.BEE:
                 switch(this.bee) {
-                    case API.CharacterType.BANJO_BEE: this.set_character(0x0362, 1.0); break;
-                    case API.CharacterType.BEE: this.set_character(0x0362, 1.0); break;
+                    case API.CharacterType.BANJO_BEE: this.set_animal(0x0362, 1.0); break;
+                    case API.CharacterType.BEE: this.set_animal(0x0362, 1.0); break;
                 }
                 break;
         }
     }
-    
-    private set_character(value: number, scale: number) {
+
+    private set_raw(value: number, scale: number) {
         // Model
         this.emulator.rdramWrite16(0x2986b2, value);
         this.emulator.rdramWrite16(0x2986ba, value);
         this.emulator.rdramWrite16(0x2986be, value);
+        this.core.player.model_index = 0x034e;
 
         // Scale
         this.bufFloat.writeFloatBE(scale, 0);
         this.core.player.scale = this.bufFloat.readInt32BE(0);
     }
+    
+    private set_character(value: number, scale: number) {
+        this.set_raw(value, scale);
+
+        // Head/Eye fix for custom models
+        let render = this.core.player.visible_parts;
+        render[4] = 1;        
+        this.core.player.visible_parts = render;
+    }
 
     private set_animal(value: number, scale: number) {
         // Model
-        this.emulator.rdramWrite16(0x2986b2, value);
-        this.emulator.rdramWrite16(0x2986ba, value);
-        this.emulator.rdramWrite16(0x2986be, value);
+        this.core.player.model_index = value;
 
         // Scale
         this.bufFloat.writeFloatBE(scale, 0);

@@ -18,7 +18,7 @@ export class Player extends API.BaseObj implements API.IPlayer {
 	private rot_z_addr: number = this.inst + 0x05a0;
 	private scale_addr: number = this.inst + 0x0c;
 	private visible_addr: number = this.inst + 0x08;
-	private visible_parts_addr: number = this.inst + 0xcbe0;
+	private visible_parts_addr: number = 0x37d234; // this.inst + 0xcbe0;
 
 	get animal(): API.AnimalType {
 		let animal: number = this.emulator.rdramRead8(this.animal_addr);
