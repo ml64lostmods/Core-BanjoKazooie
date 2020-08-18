@@ -1424,7 +1424,7 @@ export enum CharacterType {
 
 	// BEE
 	BANJO_BEE,
-	BEE
+	ZUBBA
 }
 
 export enum ExitType {

@@ -66,20 +66,20 @@ export class Character implements API.ICharacter {
             case API.AnimalType.TERMITE:
                 switch(this.termite) {
                     case API.CharacterType.BANJO_TERMITE: this.set_animal(0x034f, 1.0); break;
-                    case API.CharacterType.TERMITE: this.set_animal(0x0350, 1.0); break;
-                    case API.CharacterType.CRAB_GREEN: this.set_animal(0x0358, 1.0); break;
+                    case API.CharacterType.TERMITE: this.set_animal(0x0350, 0.4); break;
+                    case API.CharacterType.CRAB_GREEN: this.set_animal(0x0358, 0.6); break;
                 }
                 break;
             case API.AnimalType.CROCODILE:
                 switch(this.crocodile) {
                     case API.CharacterType.BANJO_CROCODILE: this.set_animal(0x0374, 1.0); break;
-                    case API.CharacterType.MR_VILE: this.set_animal(0x0373, 1.0); break;
+                    case API.CharacterType.MR_VILE: this.set_animal(0x0373, 0.9); break;
                 }
                 break;
             case API.AnimalType.WALRUS:
                 switch(this.walrus) {
                     case API.CharacterType.BANJO_WALRUS: this.set_animal(0x0359, 1.0); break;
-                    case API.CharacterType.WOZZA: this.set_animal(0x0494, 1.0); break;
+                    case API.CharacterType.WOZZA: this.set_animal(0x0494, 0.5); break;
                 }
                 break;
             case API.AnimalType.PUMPKIN:
@@ -91,7 +91,7 @@ export class Character implements API.ICharacter {
             case API.AnimalType.BEE:
                 switch(this.bee) {
                     case API.CharacterType.BANJO_BEE: this.set_animal(0x0362, 1.0); break;
-                    case API.CharacterType.BEE: this.set_animal(0x0362, 1.0); break;
+                    case API.CharacterType.ZUBBA: this.set_animal(0x0446, 1.0); break;
                 }
                 break;
         }
@@ -119,13 +119,15 @@ export class Character implements API.ICharacter {
 
         // Head/Eye fix for custom models
         let render = this.core.player.visible_parts;
-        render[4] = 1;        
+        render[0] = 1;
+        render[2] = 1;
+        render[4] = 1;
         this.core.player.visible_parts = render;
     }
 
     private set_animal(value: number, scale: number) {
         // Model
-        this.core.player.model_index = value;
+        this.true_id = value;
 
         // Scale
         this.bufFloat.writeFloatBE(scale, 0);
