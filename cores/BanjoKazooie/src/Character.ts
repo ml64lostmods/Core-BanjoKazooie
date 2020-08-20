@@ -100,7 +100,6 @@ export class Character implements API.ICharacter {
     private set_raw(value: number, scale: number) {
         // Model
         this.true_id = value;
-        this.emulator.rdramWrite16(0x2986b2, value);
         this.emulator.rdramWrite16(0x2986ba, value);
         this.emulator.rdramWrite16(0x2986be, value);
 
