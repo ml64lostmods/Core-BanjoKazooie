@@ -1511,7 +1511,8 @@ export enum LevelType {
 	MAD_MONSTER_MANSION = 0x0a,
 	SPIRAL_MOUNTAIN = 0x0b,
 	GRUNTILDAS_LAIR_ROOF = 0x0c,
-	TITLE_SCREEN = 0x0d
+	TITLE_SCREEN = 0x0d,
+	ROMHACK_LEVEL = 0x0e
 }
 
 export enum MoveType {
@@ -1700,7 +1701,8 @@ export enum SceneType {
 	END_SCENE_1 = 0x96,
 	END_SCENE_4 = 0x97,
 	INTRO_GRUNTY_THREAT_1 = 0x98,
-	INTRO_GRUNTY_THREAT_2 = 0x99
+	INTRO_GRUNTY_THREAT_2 = 0x99,
+	ROMHACK_SCENE = 0xa0
 }
 
 export enum ActorIdType {

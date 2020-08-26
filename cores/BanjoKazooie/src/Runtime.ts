@@ -47,6 +47,10 @@ export class Runtime extends API.BaseObj implements API.IRuntime {
 		// }
 		// return level as API.LevelType;
 
+		if (this.cur_level_val < API.LevelType.MUMBOS_MOUNTAIN)
+			return API.LevelType.UNKNOWN;
+		else if (this.cur_level_val > API.LevelType.TITLE_SCREEN)
+			return API.LevelType.ROMHACK_LEVEL;
 		return this.cur_level_val;
 	}
 	set current_level(val: API.LevelType) {
@@ -64,14 +68,11 @@ export class Runtime extends API.BaseObj implements API.IRuntime {
 
 	get current_scene(): API.SceneType {
 		let scene: number = this.emulator.rdramRead8(this.cur_scene_addr);
-		if (
-			scene < API.SceneType.SM_MAIN ||
-			scene > API.SceneType.INTRO_GRUNTY_THREAT_2
-		) {
+		if (scene < API.SceneType.SM_MAIN)
 			return API.SceneType.UNKNOWN;
-		}
+		else if (scene > API.SceneType.INTRO_GRUNTY_THREAT_2)
+			return API.SceneType.ROMHACK_SCENE;
 		return scene as API.SceneType;
-
 	}
 	set current_scene(val: API.SceneType) {
 		this.emulator.rdramWrite8(this.cur_scene_addr, val);
