@@ -14,6 +14,7 @@ export interface IBuffered {
 }
 
 export interface ICharacter {
+    active: boolean;
 	true_id: number;
 	bear_bird_id: number;
 	termite_id: number;

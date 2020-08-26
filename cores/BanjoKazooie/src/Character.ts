@@ -13,6 +13,7 @@ export class Character implements API.ICharacter {
     private pumpkin: API.CharacterType = API.CharacterType.BANJO_PUMPKIN;
     private bee: API.CharacterType = API.CharacterType.BANJO_BEE;
 
+    active: boolean = false;
     true_id: number = 0x034d;
 
 	constructor(emu: IMemory, core: API.IBKCore) {
@@ -40,6 +41,9 @@ export class Character implements API.ICharacter {
     set bee_id(value: API.CharacterType) { this.bee = value; }
 
 	onTick() {
+        // Must be enabled by custom character mod
+        if (!this.active) return;
+        
         switch(this.core.player.animal) {
             case API.AnimalType.BEAR_BIRD:
                 switch(this.bear_bird) {

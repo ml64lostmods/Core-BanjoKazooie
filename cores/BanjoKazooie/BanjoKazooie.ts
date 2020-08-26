@@ -150,17 +150,9 @@ export class BanjoKazooie implements ICore, API.IBKCore {
 		let addr: number;
 		let ptr: number;
 		let i: number;
-		let n: number;
 
 		let actors: Array<number> = [];
 		let voxels: Array<number> = [];
-
-		let players: Array<number> = [];
-		addr = global.ModLoader[API.AddressType.PUPPET] + 0x04;
-		for (i = 0; i < 16; i++) {
-			ptr = addr + i * 0x08;
-			if (ptr !== 0) players.push(ptr);
-		}
 
 		for (i = 0; i < 16; i++) {
 			// Actors
