@@ -1,11 +1,13 @@
 {
   "name": "BanjoKazooie",
-  "version": "1.0.16",
-  "description": "This is the official repository.",
+  "version": "1.0.17",
+  "description": "A 'Banjo Kazooie' rom-development-kit/api.",
   "main": "BanjoKazooie.js",
   "author": "SpiceyWolf, Mittenz",
-  "credits": "",
+  "credits": "TheLensta, Wedarobi",
   "license": "GPL3",
+  "core": "BanjoKazooie",
+  "updateUrl": "https://raw.githubusercontent.com/Modloader-Lost-Mods/Core-BanjoKazooie/master/update.json",
   "dependencies": {},
   "devDependencies": {},
   "repository": {

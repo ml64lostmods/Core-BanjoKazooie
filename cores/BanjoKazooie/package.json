@@ -1,11 +1,21 @@
 {
   "name": "BanjoKazooie",
-  "version": "1.0.16",
-  "description": "",
+  "version": "1.0.17",
+  "description": "A 'Banjo Kazooie' rom-development-kit/api.",
   "main": "BanjoKazooie.js",
   "author": "SpiceyWolf, Mittenz",
   "credits": "TheLensta, Wedarobi",
   "license": "GPL3",
   "core": "BanjoKazooie",
-  "updateUrl": "https://raw.githubusercontent.com/Modloader-Lost-Mods/Core-BanjoKazooie/master/update.json"
+  "updateUrl": "https://raw.githubusercontent.com/Modloader-Lost-Mods/Core-BanjoKazooie/master/update.json",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Modloader-Lost-Mods/Core-BanjoKazooie.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Modloader-Lost-Mods/Core-BanjoKazooie/issues"
+  },
+  "homepage": "https://github.com/Modloader-Lost-Mods/Core-BanjoKazooie#readme"
 }
