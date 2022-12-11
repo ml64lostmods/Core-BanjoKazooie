@@ -1,6 +1,6 @@
 {
   "name": "BanjoKazooie",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "A 'Banjo Kazooie' rom-development-kit/api.",
   "main": "BanjoKazooie.js",
   "author": "SpiceyWolf, Mittenz",

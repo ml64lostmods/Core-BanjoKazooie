@@ -43,6 +43,7 @@ export interface IInventory {
 	jiggies: number;
 	jinjos: number;
 	lives: number;
+	lvl_jiggies: number;
 	notes: number;
 	orange: number;
 	present_green: number;
@@ -86,6 +87,8 @@ export interface IPlayer {
 	rot_y: number;
 	rot_z: number;
 	scale: number;
+	state_grounded: boolean;
+	state_in_water: boolean;
 	visible: boolean;
 	visible_parts: Buffer;
 }

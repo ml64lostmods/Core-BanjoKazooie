@@ -17,6 +17,8 @@ export class Player extends API.BaseObj implements API.IPlayer {
 	private rot_y_addr: number = this.inst + 0x18;
 	private rot_z_addr: number = this.inst + 0x05a0;
 	private scale_addr: number = this.inst + 0x0c;
+	private state_grounded_addr: number = this.inst - 0x0180;
+	private state_in_water_addr: number = this.inst - 0x017f;
 	private visible_addr: number = this.inst + 0x08;
 	private visible_parts_addr: number = 0x37d234; // this.inst + 0xcbe0;
 
@@ -171,6 +173,28 @@ export class Player extends API.BaseObj implements API.IPlayer {
 	}
 	set scale(val: number) {
 		this.emulator.rdramWrite32(this.scale_addr, val);
+	}
+
+	get state_grounded(): boolean {
+		return this.emulator.rdramRead8(this.state_grounded_addr) === 0x01;
+	}
+	set state_grounded(val: boolean) {
+		if (val) {
+			this.emulator.rdramWrite8(this.state_grounded_addr, 0x01);
+		} else {
+			this.emulator.rdramWrite8(this.state_grounded_addr, 0x00);
+		}
+	}
+
+	get state_in_water(): boolean {
+		return this.emulator.rdramRead8(this.state_in_water_addr) === 0x01;
+	}
+	set state_in_water(val: boolean) {
+		if (val) {
+			this.emulator.rdramWrite8(this.state_in_water_addr, 0x01);
+		} else {
+			this.emulator.rdramWrite8(this.state_in_water_addr, 0x00);
+		}
 	}
 
 	get visible(): boolean {

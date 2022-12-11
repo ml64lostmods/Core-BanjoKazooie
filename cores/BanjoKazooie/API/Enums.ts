@@ -1473,7 +1473,7 @@ export enum InventoryType {
 	CUR_LVL_ORANGE = 0x19 * 4, // 0x64
 	VILE_SCORE_PLYR = 0x1a * 4, // 0x68
 	VILE_SCORE_VILE = 0x1b * 4, // 0x6c
-	MUMBO_TOKENS_HELD = 0x1c * 4, // 0x70
+	MUMBO_TOKENS = 0x1c * 4, // 0x70
 	GRUMBLIES = 0x1d * 4, // 0x74
 	YUMBLIES = 0x1e * 4, // 0x78
 	CUR_LVL_PRESENT_GREEN = 0x1f * 4, // 0x7c
@@ -1482,7 +1482,7 @@ export enum InventoryType {
 	CUR_LVL_CATERPILLARS = 0x22 * 4, // 0x88
 	CUR_LVL_ACORNS = 0x23 * 4, // 0x8c
 	TWINKLIES = 0x24 * 4, // 0x90
-	MUMBO_TOKENS = 0x25 * 4, // 0x94
+	TEXT_MUMBO_TOKENS = 0x25 * 4, // 0x94
 	JIGGIES = 0x26 * 4, // 0x98
 	JOKER_CARD = 0x27 * 4, // 0x9c
 	TEXT_JIGGIES = 0x2b * 4, // 0xac
